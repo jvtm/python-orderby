@@ -48,3 +48,9 @@ class TestOrderByAPI(TestCase):
         for qstring, result in expected:
             ordered = sorted(TEST_DATA_PERSONS, key=orderby(qstring))
             self.assertEqual(get_ids(ordered), result)
+
+    def test_inplace_sorting(self):
+        copied = list(TEST_DATA_PERSONS)
+        self.assertEqual(get_ids(copied), (0, 1, 2, 3))
+        copied.sort(key=orderby('score DESC, lastname, firstname, age, id'))
+        self.assertEqual(get_ids(copied), (1, 3, 2, 0))

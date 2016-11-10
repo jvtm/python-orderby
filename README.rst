@@ -8,6 +8,8 @@ Python key functions for multi-field ordering in SQL ORDER BY fashion
 
 Meant to be used with built-in ``sorted()`` *key function*.
 
+Supports also ``list.sort()`` doing *in-place sorting*.
+
 Implementation uses ``operator.itemgetter()`` + some internal helper classes to allow descending sorting order.
 
 So far this is tested and used on *lists of dictionaries*. Adding support for named tuples and others would
@@ -74,6 +76,43 @@ Chained `asc()` and `desc()` usage:
       }
     ]
 
+
+In-place sorting of a list:
+
+.. code-block:: python
+
+    >>> files.sort(key=desc('path'))
+    >>> print(json.dumps(files, indent=2))
+    [
+      {
+        "size": 1234,
+        "path": "foo/bar.txt"
+      },
+      {
+        "size": 1234,
+        "path": "foo/abc.bin"
+      },
+      {
+        "size": 0,
+        "path": "/dev/null"
+      }
+    ]
+    >>> files.sort(key=desc('size').asc('path'))
+    >>> print(json.dumps(files, indent=2))
+    [
+      {
+        "size": 1234,
+        "path": "foo/abc.bin"
+      },
+      {
+        "size": 1234,
+        "path": "foo/bar.txt"
+      },
+      {
+        "size": 0,
+        "path": "/dev/null"
+      }
+    ]
 
 Internals
 ---------
