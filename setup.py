@@ -13,7 +13,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='orderby',
-    version='0.0.1',
+    version='0.0.2',
     description='Python key functions for multi-field ordering',
     long_description=long_description,
     url='https://github.com/jvtm/python-orderby',
