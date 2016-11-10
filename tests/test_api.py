@@ -39,12 +39,6 @@ class TestOrderByAPI(TestCase):
         self.assertEqual(rdesc, rrev)
 
     def test_orderby_qstrings(self):
-        entries = [
-            {'id': 0, 'lastname': 'Smith', 'firstname': 'John', 'age': 42, 'score': 50},
-            {'id': 1, 'lastname': 'Smith', 'firstname': 'Jane', 'age': 37, 'score': 100},
-            {'id': 2, 'lastname': 'A', 'firstname': 'B', 'age': 20, 'score': 50},
-            {'id': 3, 'lastname': 'A', 'firstname': 'A', 'age': 20, 'score': 50},
-        ]
         expected = (
             # order by string -> expected id order
             ('lastname, firstname, score', (3, 2, 1, 0)),
@@ -52,5 +46,5 @@ class TestOrderByAPI(TestCase):
             ('id DESC', (3, 2, 1, 0)),
         )
         for qstring, result in expected:
-            ordered = sorted(entries, key=orderby(qstring))
+            ordered = sorted(TEST_DATA_PERSONS, key=orderby(qstring))
             self.assertEqual(get_ids(ordered), result)
