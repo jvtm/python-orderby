@@ -1,6 +1,5 @@
 """
 Main use-case: sort list of dictionaries. Better explanation to appear here.
-TODO: unit-tests
 TODO: support attrgetter()? -> maybe auto-select helper (itemgetter fails -> use attrgetter)
 TODO: repr() or str() -> back to parseable sql string :)
 """
@@ -17,12 +16,12 @@ class Desc:
         self.obj = obj
 
     def __repr__(self):
-        return '%s(%r)' % (self.__class__, self.obj)
+        return '%s(%r)' % (self.__class__.__name__, self.obj)
 
     def __lt__(self, other):
         if not isinstance(other, self.__class__):
             raise NotImplemented
-        return self.obj >= other.obj
+        return self.obj > other.obj
 
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
