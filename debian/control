@@ -1,0 +1,29 @@
+Source: python-orderby
+Section: python
+Priority: optional
+Maintainer: Jyrki Muukkonen <jvtm@kruu.org>
+Build-Depends: debhelper (>= 9), dh-python,
+ python3-all, python3-setuptools,
+ python-all, python-setuptools
+Standards-Version: 3.9.6
+X-Python-Version: >= 2.7
+X-Python3-Version: >= 3.4
+
+Package: python-orderby
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}
+Description: Python multi-field ordering in SQL ORDER BY fashion (Python 2.x)
+ Allows SQL-like ascending and descending ordering of Python dictionaries.
+ Ordering can be chained via .desc() and .asc() calls. Alternative syntax
+ parses SQL-like ORDER BY string.
+ See README.RST for examples
+
+Package: python3-orderby
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Description: Python multi-field ordering in SQL ORDER BY fashion (Python 3.x)
+ Allows SQL-like ascending and descending ordering of Python dictionaries.
+ Ordering can be chained via .desc() and .asc() calls. Alternative syntax
+ parses SQL-like ORDER BY string.
+ See README.RST for examples
+
