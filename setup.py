@@ -34,5 +34,5 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     keywords='sort order orderby development',
-    packages=find_packages(exclude=['tests']),
+    packages=find_packages(),
 )
