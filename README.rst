@@ -114,7 +114,25 @@ In-place sorting of a list:
       }
     ]
 
+
+Works also with `SortedContainers <http://www.grantjenks.com/docs/sortedcontainers/>`_:
+
+.. code-block:: python
+
+    >>> from sortedcontainers import SortedList
+    >>> from orderby import desc
+    >>> mylist = SortedList(key=desc('value'))
+    >>> mylist
+    SortedListWithKey([], key=<orderby.sorter.OrderBy object at 0x108f65978>, load=1000)
+    >>> mylist.add({'value': 13})
+    >>> mylist.add({'value': 2})
+    >>> mylist.add({'value': 1000})
+    >>> mylist
+    SortedListWithKey([{'value': 1000}, {'value': 13}, {'value': 2}], key=<orderby.sorter.OrderBy object at 0x108f65978>, load=1000)
+
+
 Internals
 ---------
 
 To be explained here later...
+
